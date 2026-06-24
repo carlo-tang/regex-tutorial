@@ -8,6 +8,17 @@
 
 **Link an Kollegen schicken:** [TODO]
 
+**Erkläre zuerst die regex101-Oberfläche:**  
+Mitte: "Regular Expression" (oben) und "Test String" (unten) — ergibt sich von selbst.  
+Rechte Spalte zeigen und erklären:
+- **Explanation** — erklärt jeden Teil des Regex in Klartext
+- **Match information** — listet alle Treffer mit Position und Inhalt
+- **Quick reference** — Spickzettel mit allen Regex-Symbolen (praktisch zum Nachschlagen)
+
+*Tipp: Explanation ist besonders nützlich — wenn jemand nicht versteht warum ein Regex matcht, einfach dort nachschauen.*
+
+---
+
 **Test-String:**
 ```
 abcdefghijklmnopqrstuvwxyz
@@ -51,7 +62,10 @@ Schreibt einen Regex, der nur das ? in Zeile 5 matcht — nicht alle anderen Zei
 Tipp: Nutzt \
 ```
 
-**Lösung:** `\?`  
+**Lösung:**
+```
+\?
+```
 **Treffer:** Nur das `?` in Zeile 5.  
 **Erkläre:** `?` ist ein Metazeichen (bedeutet "0 oder 1 mal"). Mit `\?` wird es zum wörtlichen Fragezeichen. Gleiches Prinzip für alle Zeichen aus Zeile 5.
 
@@ -89,7 +103,10 @@ Schreibt einen Regex, der sowohl Hallo als auch hallo findet — aber nicht HALL
 Tipp: Nutzt [ ]
 ```
 
-**Lösung:** `[Hh]allo`  
+**Lösung:**
+```
+[Hh]allo
+```
 **Treffer:** 5 Zeilen (alle außer "HALLO, WELT!")  
 **Erkläre:** `[Hh]` = Zeichenklasse — matcht genau ein Zeichen, entweder "H" oder "h". Alles in eckigen Klammern ist eine Auswahl von einem Zeichen.
 
@@ -119,7 +136,10 @@ Schreibt einen Regex, der nur Zeilen findet, die mit ! enden.
 Tipp: Nutzt $
 ```
 
-**Lösung:** `!$`  
+**Lösung:**
+```
+!$
+```
 **Treffer:** 2 Zeilen ("Hallo, Welt!" und "Hallo, welt!")  
 **Erkläre:** `$` = Zeilenende. Falls niemand draufkommt: *"Es gibt ein Gegenstück zu `^`..."*  
 **Alternative:** `Welt!$` — präziser, nur Zeilen die auf "Welt!" enden.
@@ -159,7 +179,10 @@ Schreibt einen Regex, der pro Oktett maximal 3 Ziffern erlaubt.
 Tipp: Nutzt { }
 ```
 
-**Lösung:** `\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}`  
+**Lösung:**
+```
+\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}
+```
 **Erkläre:** `{1,3}` = mindestens 1, maximal 3 Ziffern.  
 **Wichtig:** `256.1.1.1` und `192.168.1.999` matchen trotzdem — Regex prüft nur Struktur, nicht ob der Wert ≤ 255 ist. Das kann Regex grundsätzlich nicht leisten.
 
@@ -176,7 +199,10 @@ Schreibt einen Regex, der nur IPs aus privaten Netzen findet:
 Tipp: Nutzt ( ) und |
 ```
 
-**Lösung:** `(10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.16\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3})`  
+**Lösung:**
+```
+(10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.16\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3})
+```
 **Treffer:** `10.0.0.1`, `172.16.5.100`, `192.168.1.1`, `192.168.1.999`, `192.168.1.1 ist der Router`, `10.0.0.254`  
 **Erkläre:** `|` = ODER. Jede Alternative ist ein vollständiges Muster — `10` braucht noch 3 Oktette, `172.16` und `192.168` nur noch 2. Deshalb muss jede Alternative für sich ausgeschrieben werden.  
 **Wichtig — auf `192.168.1.999` hinweisen:** *"Diese IP matcht — obwohl 999 kein gültiges Oktett ist. Warum?"* → `\d{1,3}` prüft nur: 1 bis 3 Ziffern. Ob der Wert zwischen 0 und 255 liegt, kann Regex grundsätzlich nicht prüfen. Regex erkennt **Format**, nicht **Bedeutung**.
