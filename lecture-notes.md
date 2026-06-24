@@ -26,9 +26,11 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 0123456789
 ! @ # % & - _ = , ; : " ' < >
 . * + ? ^ $ { } [ ] ( ) | \ /
+122333444455555
+aBBcccDDDDeeeee
 ```
 
-*Zeile 4: Sonderzeichen ohne Escape · Zeile 5: Metazeichen — brauchen immer `\`*
+*Zeile 4: Sonderzeichen ohne Escape · Zeile 5: Metazeichen — brauchen immer `\` · Zeilen 6+7: für Quantifizierer*
 
 ---
 
@@ -80,6 +82,59 @@ Tipp: Nutzt \
 ```
 **Treffer:** Nur das `?` in Zeile 5.  
 **Erkläre:** `?` ist ein Metazeichen (bedeutet "0 oder 1 mal"). Mit `\?` wird es zum wörtlichen Fragezeichen. Gleiches Prinzip für alle Zeichen aus Zeile 5.
+
+---
+
+### Gemeinsam 0b – Quantifizierer
+
+**Sag:** *"Tippt nacheinander mit mir — wir schauen auf Zeilen 6 und 7:"*
+
+1. `\d` → *"Wie viele Treffer? Jede Ziffer einzeln."*
+2. `\d+` → *"Was ändert sich? Warum ein Treffer statt vielen?"*
+3. `\d{3}` → *"Was matcht jetzt genau? Zählt die Gruppen."*
+4. `\d{2,4}` → *"Was passiert bei 2 bis 4 Ziffern?"*
+5. `[A-Z]+` → *"Was matcht in Zeile 7? Warum nicht das 'a' am Anfang?"*
+6. `[a-z]+` → *"Und jetzt? Wie viele Treffer, welche?"*
+
+| Regex | Treffer auf Zeile 6+7 | Hinweis |
+|---|---|---|
+| `\d` | 15 Einzelziffern | ein Match pro Zeichen |
+| `\d+` | `122333444455555` (1 Treffer) | gierig — nimmt so viele wie möglich |
+| `\d{3}` | `122` `333` `444` `455` `555` | genau 3, Rest wird neu angefangen |
+| `\d{2,4}` | `1223` `3344` `4455` `555` | gierig: nimmt 4 wenn möglich, sonst weniger |
+| `[A-Z]+` | `BB` `DDDD` | nur Großbuchstaben-Blöcke |
+| `[a-z]+` | `a` `ccc` `eeeee` | nur Kleinbuchstaben-Blöcke |
+
+**Übersicht Quantifizierer:**
+
+| Symbol | Bedeutung |
+|---|---|
+| `+` | 1 oder mehr |
+| `*` | 0 oder mehr |
+| `?` | 0 oder 1 (optional) |
+| `{n}` | genau n mal |
+| `{n,}` | mindestens n mal |
+| `{n,m}` | zwischen n und m mal |
+
+**Erkläre:** Quantifizierer sind immer **gierig** — sie nehmen so viele Zeichen wie möglich. `\d+` auf `122333` gibt einen einzigen Treffer, nicht sechs.
+
+---
+
+### Aufgabe 0b
+
+**Frage (kopieren & in Teams einfügen):**
+```
+Schreibt einen Regex, der auf Zeile 7 (aBBcccDDDDeeeee) nur die
+Großbuchstaben-Blöcke matcht — aber genau 2 oder mehr Großbuchstaben.
+Tipp: Nutzt [A-Z] und { }
+```
+
+**Lösung:**
+```
+[A-Z]{2,}
+```
+**Treffer:** `BB` und `DDDD`  
+**Erkläre:** `{2,}` = mindestens 2 mal. `[A-Z]{1,}` wäre dasselbe wie `[A-Z]+`.
 
 ---
 
