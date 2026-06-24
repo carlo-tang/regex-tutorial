@@ -203,7 +203,7 @@ Tipp: Nutzt [ ]
 
 | Regex | Treffer | Hinweis |
 |---|---|---|
-| `Hallo.Welt` | 3 Zeilen | Punkt matcht "," und " " |
+| `Hallo.Welt` | 1 Zeile ("Hallo Welt") | Punkt matcht genau 1 Zeichen — ", " sind 2 Zeichen, passt nicht |
 | `^Hallo` | 4 Zeilen | Zeilen, die mit "Hallo" beginnen |
 
 **Erkläre:** `.` = beliebiges Zeichen — auch Leerzeichen und Kommas. Das ist der häufigste Anfängerfehler in der Praxis. `^` = Zeilenanfang.
