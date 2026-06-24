@@ -45,8 +45,9 @@ aBBcccDDDDeeeee
 5. `[A-z]` → *"Und jetzt? Was matcht hier unerwartet?"*
 6. `[0-z]` → *"Was matcht jetzt alles?"*
 7. `[0-9A-Za-z]` → *"Wie schreibt man es richtig?"*
-8. `.` → *"Was passiert? Warum matcht der Punkt plötzlich alles?"*
-9. `\.` → *"Was ändert sich jetzt?"*
+8. *(live eintippen, kein festes Beispiel)* — gemischte Zeichenklasse mit Buchstaben, Ziffern, Sonderzeichen und Escaping, z.B. `[db4sf94\*\+!_-]` → *"Was braucht `\`, was nicht?"*
+9. `.` → *"Was passiert? Warum matcht der Punkt plötzlich alles?"*
+10. `\.` → *"Was ändert sich jetzt?"*
 
 | Regex | Treffer | Hinweis |
 |---|---|---|
@@ -57,6 +58,7 @@ aBBcccDDDDeeeee
 | `[A-z]` | Zeilen 1+2 + `^` `[` `]` `\` `_` | ASCII 65–122: zwischen Z und a liegen noch 6 Sonderzeichen |
 | `[0-z]` | Zeilen 1+2+3 + viele Sonderzeichen | ASCII 48–122: `:` `;` `<` `>` `?` `@` stecken auch drin |
 | `[0-9A-Za-z]` | Zeilen 1+2+3 komplett, nichts aus 4+5 | Explizit kombiniert — keine ASCII-Überraschungen |
+| `[db4sf94\*\+!_-]` | *(live)* einzelne Buchstaben/Ziffern + `*` `+` `!` `_` `-` | Metazeichen in `[ ]` brauchen `\`, harmlose Zeichen nicht |
 | `.` | Alles — jedes Zeichen auf jeder Zeile | Punkt = Wildcard, Überraschungsmoment! |
 | `\.` | Nur der `.` in Zeile 5 | Backslash macht aus dem Metazeichen ein Literal |
 
