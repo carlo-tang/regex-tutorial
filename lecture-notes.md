@@ -1,6 +1,8 @@
 # Regex Tutorial – Moderationsvorlage
 
-**Plattform:** regex101.com · Flavor: PCRE · Flags: `g` `m`
+**Plattform:** regex101.com · Flavor: PCRE2 (PHP) · Flags: `g` `m`
+
+**Hinweis zu den Flags:** Wir nutzen den **Global-Modus** (`g`). Das bedeutet: der Regex sucht nicht nur den ersten Treffer und hört auf, sondern läuft den gesamten Text durch und markiert *alle* Treffer. Ohne `g` würde z.B. `[a-z]` nur den ersten Buchstaben `a` markieren. Wenn die Kollegen fragen warum alles auf einmal markiert wird — das ist der Grund.
 
 ---
 
