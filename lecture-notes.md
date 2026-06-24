@@ -176,6 +176,6 @@ Schreibt einen Regex, der nur IPs aus privaten Netzen findet:
 Tipp: Nutzt ( ) und |
 ```
 
-**Lösung:** `(10|172\.16|192\.168)\.\d{1,3}\.\d{1,3}\.\d{1,3}`  
-**Treffer:** `10.0.0.1`, `172.16.5.100`, `192.168.1.1`, `192.168.1.999`, `192.168.1.1 ist der Router`  
-**Erkläre:** `|` = ODER. Die Klammern fassen die Alternativen zusammen — ohne sie würde `|` den ganzen Ausdruck trennen.
+**Lösung:** `(10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.16\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3})`  
+**Treffer:** `10.0.0.1`, `172.16.5.100`, `192.168.1.1`, `192.168.1.999`, `192.168.1.1 ist der Router`, `10.0.0.254`  
+**Erkläre:** `|` = ODER. Jede Alternative ist ein vollständiges Muster — `10` braucht noch 3 Oktette, `172.16` und `192.168` nur noch 2. Deshalb muss jede Alternative für sich ausgeschrieben werden.
