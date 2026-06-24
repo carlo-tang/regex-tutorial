@@ -77,8 +77,8 @@ Ziel: Praxisnaher Einstieg, schnelle Erfolgserlebnisse, keine Kommandozeilen-Vor
 
 ## Dateien
 
-- `aufgaben.md` — 6 Kern-Aufgaben + 2 Bonus, Links als [TODO]
-- `loesungen.md` — Lösungen mit Regexen und Erklärungen
+- `lecture-notes.md` — Moderationsvorlage (Source of Truth): Moderationstext, Regexe, Lösungen, Erklärungen
+- `aufgaben.md` — Kollegenversion: leitet sich aus lecture-notes.md ab (erst lecture-notes fertig, dann sync)
 - `cheatsheet.md` — Referenzkarte: alle Konzepte + Netzwerk-Beispiele zum Mitnehmen
 
 ## Nächste Schritte
