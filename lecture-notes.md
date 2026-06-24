@@ -39,18 +39,28 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 1. `[a-z]` → *"Welche Zeile wird komplett markiert?"*
 2. `[A-Z]` → *"Und jetzt?"*
 3. `[0-9]` → *"Und jetzt?"*
-4. `.` → *"Was passiert? Warum matcht der Punkt plötzlich alles?"*
-5. `\.` → *"Was ändert sich jetzt?"*
+4. `[a-Z]` → *"Was passiert jetzt?"*
+5. `[A-z]` → *"Und jetzt? Was matcht hier unerwartet?"*
+6. `[0-z]` → *"Was matcht jetzt alles?"*
+7. `[0-9A-Za-z]` → *"Wie schreibt man es richtig?"*
+8. `.` → *"Was passiert? Warum matcht der Punkt plötzlich alles?"*
+9. `\.` → *"Was ändert sich jetzt?"*
 
 | Regex | Treffer | Hinweis |
 |---|---|---|
 | `[a-z]` | Zeile 1 komplett | |
 | `[A-Z]` | Zeile 2 komplett | |
 | `[0-9]` | Zeile 3 komplett | |
+| `[a-Z]` | Fehlermeldung | `a` (97) liegt in ASCII nach `Z` (90) — ungültiger Bereich |
+| `[A-z]` | Zeilen 1+2 + `^` `[` `]` `\` `_` | ASCII 65–122: zwischen Z und a liegen noch 6 Sonderzeichen |
+| `[0-z]` | Zeilen 1+2+3 + viele Sonderzeichen | ASCII 48–122: `:` `;` `<` `>` `?` `@` stecken auch drin |
+| `[0-9A-Za-z]` | Zeilen 1+2+3 komplett, nichts aus 4+5 | Explizit kombiniert — keine ASCII-Überraschungen |
 | `.` | Alles — jedes Zeichen auf jeder Zeile | Punkt = Wildcard, Überraschungsmoment! |
 | `\.` | Nur der `.` in Zeile 5 | Backslash macht aus dem Metazeichen ein Literal |
 
-**Erkläre:** Zeile 4 = Zeichen die direkt getippt werden können. Zeile 5 = Metazeichen — in Regex haben sie eine Sonderbedeutung, deshalb brauchen sie `\` davor wenn man das Zeichen selbst meint.
+**Erkläre (ASCII):** Regex-Bereiche wie `[A-z]` folgen der ASCII-Tabelle, nicht dem Alphabet. Zwischen `Z` (90) und `a` (97) liegen `[`, `\`, `]`, `^`, `_`, `` ` `` — die werden ungewollt mitgematcht. Deshalb immer explizit kombinieren: `[A-Za-z]`.
+
+**Erkläre (Metazeichen):** Zeile 4 = Zeichen die direkt getippt werden können. Zeile 5 = Metazeichen — in Regex haben sie eine Sonderbedeutung, deshalb brauchen sie `\` davor wenn man das Zeichen selbst meint.
 
 ---
 
