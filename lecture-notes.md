@@ -155,17 +155,16 @@ Tipp: Nutzt [ ]
 
 **Frage (kopieren & in Teams einfügen):**
 ```
-Schreibt einen Regex, der nur Zeilen findet, die mit ! enden.
+Schreibt einen Regex, der nur Zeilen findet, die mit llo enden.
 Tipp: Nutzt $
 ```
 
 **Lösung:**
 ```
-!$
+llo$
 ```
-**Treffer:** 2 Zeilen ("Hallo, Welt!" und "Hallo, welt!")  
-**Erkläre:** `$` = Zeilenende. Falls niemand draufkommt: *"Es gibt ein Gegenstück zu `^`..."*  
-**Alternative:** `Welt!$` — präziser, nur Zeilen die auf "Welt!" enden.
+**Treffer:** 1 Zeile ("Welt Hallo")  
+**Erkläre:** `$` = Zeilenende. Das Gegenstück zu `^`. `llo$` matcht nur wenn `llo` am Ende der Zeile steht — "Hallo, Welt!" enthält auch "llo", aber nicht am Ende.
 
 ---
 
