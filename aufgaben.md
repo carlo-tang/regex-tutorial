@@ -1,0 +1,106 @@
+# Regex Tutorial – Ablauf
+
+**Plattform:** regex101.com · Flavor: PCRE · Flags: `g` `m`
+
+---
+
+## Phase 1: Grundlagen – "Hallo, Welt!"
+
+**Link:** https://regex101.com/r/QEd4Fj/1 ← alle öffnen diesen Link
+
+**Test-String:**
+```
+Hallo, Welt!
+Hallo Welt
+hallo, Welt!
+HALLO, WELT!
+Hallo, Welt
+Hallo, welt!
+```
+
+---
+
+### Gemeinsam 1 – Literal & Groß-/Kleinschreibung
+
+Tippt gemeinsam nacheinander:
+
+1. `Hallo` → Wie viele Treffer? Welche Zeilen fehlen?
+2. `hallo` → Was ändert sich?
+3. `HALLO` → Was passiert?
+
+**Erkenntnis:** Regex unterscheidet Groß- und Kleinschreibung.
+
+---
+
+### Aufgabe 1
+
+> Schreibe einen Regex, der sowohl `Hallo` als auch `hallo` findet — aber nicht `HALLO`.
+
+---
+
+### Gemeinsam 2 – Punkt als Wildcard & Anker
+
+Tippt gemeinsam nacheinander:
+
+1. `Hallo.Welt` → Warum matcht auch "Hallo Welt" (mit Leerzeichen)?
+2. `^Hallo` → Was bewirkt das `^`?
+
+**Erkenntnis:** `.` = beliebiges Zeichen. `^` = Zeilenanfang.
+
+---
+
+### Aufgabe 2
+
+> Schreibe einen Regex, der nur Zeilen findet, die mit `!` **enden**.
+
+---
+
+## Phase 2: IP-Adressen
+
+**Link:** https://regex101.com/r/lO9tf0/1 ← alle öffnen diesen Link
+
+**Test-String:**
+```
+192.168.1.1
+10.0.0.1
+172.16.5.100
+8.8.8.8
+256.1.1.1
+192.168.1.999
+192_168_1_1
+Kein IP: nur Text
+192.168.1.1 ist der Router
+Server: 10.0.0.254
+```
+
+---
+
+### Gemeinsam 3 – Ziffern & die Wildcard-Falle
+
+Tippt gemeinsam nacheinander:
+
+1. `\d+` → Was wird markiert? Was bedeutet `\d`, was bedeutet `+`?
+2. `\d+.\d+.\d+.\d+` → Welcher Eintrag matcht überraschend? Warum?
+3. `\d+\.\d+\.\d+\.\d+` → Was ändert sich? Was macht der Backslash?
+
+**Erkenntnis:** `\d` = Ziffer. `+` = ein oder mehr. `\.` = wörtlicher Punkt (kein Wildcard).
+
+---
+
+### Aufgabe 3
+
+*Test-String: gleicher wie oben (Phase 2)*
+
+> Das Muster `\d+\.\d+\.\d+\.\d+` matcht noch `256.1.1.1` und `192.168.1.999`.  
+> Schreibe einen Regex, der pro Oktett **maximal 3 Ziffern** erlaubt.
+
+---
+
+## Bonus (wenn Zeit bleibt)
+
+**Link:** https://regex101.com/r/lO9tf0/1 ← IP-Test-String von oben
+
+### Bonus – Private IP-Bereiche
+
+> Schreibe einen Regex, der **nur** IPs aus privaten Netzen findet:  
+> 10.x.x.x · 172.16.x.x · 192.168.x.x
