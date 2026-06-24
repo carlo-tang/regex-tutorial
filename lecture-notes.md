@@ -180,3 +180,33 @@ Tipp: Nutzt ( ) und |
 **Treffer:** `10.0.0.1`, `172.16.5.100`, `192.168.1.1`, `192.168.1.999`, `192.168.1.1 ist der Router`, `10.0.0.254`  
 **Erkläre:** `|` = ODER. Jede Alternative ist ein vollständiges Muster — `10` braucht noch 3 Oktette, `172.16` und `192.168` nur noch 2. Deshalb muss jede Alternative für sich ausgeschrieben werden.  
 **Wichtig — auf `192.168.1.999` hinweisen:** *"Diese IP matcht — obwohl 999 kein gültiges Oktett ist. Warum?"* → `\d{1,3}` prüft nur: 1 bis 3 Ziffern. Ob der Wert zwischen 0 und 255 liegt, kann Regex grundsätzlich nicht prüfen. Regex erkennt **Format**, nicht **Bedeutung**.
+
+---
+
+## Exkurs: Regex für Validierung (nicht nur Matching)
+
+**Sag:** *"Regex kann auch zur Validierung eingesetzt werden — mit einem Unterschied:"*
+
+- **Matching** (ohne Anker): Muster wird *irgendwo* im Text gesucht
+- **Validierung** (mit `^` und `$`): Der *gesamte* String muss dem Muster entsprechen
+
+**Aber:** Regex validiert nur **Struktur**, nie **Wertebereich**. `\d{1,3}` akzeptiert 999 genauso wie 1.
+
+*"Wie würde ein Regex aussehen, der wirklich nur Werte von 0 bis 255 erlaubt?"*
+
+**Zeige** (nicht tippen lassen — nur anschauen):
+
+```
+^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}$
+```
+
+| Teil | Matcht |
+|---|---|
+| `25[0-5]` | 250–255 |
+| `2[0-4]\d` | 200–249 |
+| `1\d\d` | 100–199 |
+| `[1-9]?\d` | 0–99 |
+| `(...){3}` | dasselbe Muster noch 3× mit Punkt davor |
+| `^` und `$` | gesamte Zeile muss passen — kein Prefix/Suffix erlaubt |
+
+**Fazit:** Für echte IP-Validierung wird Regex schnell komplex. In der Praxis: Regex prüft das Format, die Programmiersprache prüft den Wertebereich. Regex ist ein Werkzeug — kein Allheilmittel.
