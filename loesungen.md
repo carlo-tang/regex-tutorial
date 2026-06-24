@@ -13,8 +13,8 @@
 abcdefghijklmnopqrstuvwxyz
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 0123456789
-! @ # % & - _ = , ; : " ' < > /
-. * + ? ^ $ { } [ ] ( ) | \
+! @ # % & - _ = , ; : " ' < >
+. * + ? ^ $ { } [ ] ( ) | \ /
 ```
 
 *Zeile 4: Sonderzeichen ohne Escape · Zeile 5: Metazeichen — brauchen immer `\`*
