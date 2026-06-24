@@ -30,7 +30,8 @@
 
 ### Aufgabe 1
 
-**Sag:** *"Schreibt einen Regex, der sowohl `Hallo` als auch `hallo` findet — aber nicht `HALLO`."*
+**Sag:** *"Schreibt einen Regex, der sowohl `Hallo` als auch `hallo` findet — aber nicht `HALLO`."*  
+**Tipp an Kollegen:** *"Nutzt `[ ]`"*
 
 **Lösung:** `[Hh]allo`  
 **Treffer:** 5 Zeilen (alle außer "HALLO, WELT!")  
@@ -56,7 +57,8 @@
 
 ### Aufgabe 2
 
-**Sag:** *"Schreibt einen Regex, der nur Zeilen findet, die mit `!` enden."*
+**Sag:** *"Schreibt einen Regex, der nur Zeilen findet, die mit `!` enden."*  
+**Tipp an Kollegen:** *"Nutzt `$`"*
 
 **Lösung:** `!$`  
 **Treffer:** 2 Zeilen ("Hallo, Welt!" und "Hallo, welt!")  
@@ -91,7 +93,8 @@
 
 ### Aufgabe 3
 
-**Sag:** *"Das Muster `\d+\.\d+\.\d+\.\d+` matcht noch `256.1.1.1` und `192.168.1.999`. Schreibt einen Regex, der pro Oktett maximal 3 Ziffern erlaubt."*
+**Sag:** *"Das Muster `\d+\.\d+\.\d+\.\d+` matcht noch `256.1.1.1` und `192.168.1.999`. Schreibt einen Regex, der pro Oktett maximal 3 Ziffern erlaubt."*  
+**Tipp an Kollegen:** *"Nutzt `{ }`"*
 
 **Lösung:** `\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}`  
 **Erkläre:** `{1,3}` = mindestens 1, maximal 3 Ziffern.  

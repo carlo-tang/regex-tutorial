@@ -36,6 +36,8 @@ Tippt gemeinsam nacheinander:
 
 > Schreibe einen Regex, der sowohl `Hallo` als auch `hallo` findet — aber nicht `HALLO`.
 
+*Tipp: Nutzt `[ ]`*
+
 ---
 
 ### Gemeinsam 2 – Punkt als Wildcard & Anker
@@ -52,6 +54,8 @@ Tippt gemeinsam nacheinander:
 ### Aufgabe 2
 
 > Schreibe einen Regex, der nur Zeilen findet, die mit `!` **enden**.
+
+*Tipp: Nutzt `$`*
 
 ---
 
@@ -93,6 +97,8 @@ Tippt gemeinsam nacheinander:
 
 > Das Muster `\d+\.\d+\.\d+\.\d+` matcht noch `256.1.1.1` und `192.168.1.999`.  
 > Schreibe einen Regex, der pro Oktett **maximal 3 Ziffern** erlaubt.
+
+*Tipp: Nutzt `{ }`*
 
 ---
 
