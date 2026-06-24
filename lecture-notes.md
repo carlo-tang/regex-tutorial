@@ -60,6 +60,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 
 **Erkläre (ASCII):** Regex-Bereiche wie `[A-z]` folgen der ASCII-Tabelle, nicht dem Alphabet. Zwischen `Z` (90) und `a` (97) liegen `[`, `\`, `]`, `^`, `_`, `` ` `` — die werden ungewollt mitgematcht. Deshalb immer explizit kombinieren: `[A-Za-z]`.
 
+**ASCII-Tabelle zeigen:** [theasciicode.com.ar](https://theasciicode.com.ar/) — Positionen von Buchstaben, Ziffern und Sonderzeichen aufzeigen.
+
 **Erkläre (Metazeichen):** Zeile 4 = Zeichen die direkt getippt werden können. Zeile 5 = Metazeichen — in Regex haben sie eine Sonderbedeutung, deshalb brauchen sie `\` davor wenn man das Zeichen selbst meint.
 
 ---
