@@ -155,16 +155,16 @@ Tipp: Nutzt [ ]
 
 **Frage (kopieren & in Teams einfügen):**
 ```
-Schreibt einen Regex, der nur Zeilen findet, die mit llo enden.
+Schreibt einen Regex, der nur Zeilen findet, die mit Hallo enden.
 Tipp: Nutzt $
 ```
 
 **Lösung:**
 ```
-llo$
+Hallo$
 ```
 **Treffer:** 1 Zeile ("Welt Hallo")  
-**Erkläre:** `$` = Zeilenende. Das Gegenstück zu `^`. `llo$` matcht nur wenn `llo` am Ende der Zeile steht — "Hallo, Welt!" enthält auch "llo", aber nicht am Ende.
+**Erkläre:** `$` = Zeilenende. Das Gegenstück zu `^`. `Hallo$` matcht nur wenn `Hallo` am Ende der Zeile steht — die anderen Zeilen enthalten `Hallo` auch, aber nicht am Ende.
 
 ---
 
