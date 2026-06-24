@@ -4,6 +4,54 @@
 
 ---
 
+## Phase 0: Zeichentypen
+
+**Link an Kollegen schicken:** [TODO]
+
+**Test-String:**
+```
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+0123456789
+! @ # $ % & * ( ) - + = . , / ?
+```
+
+---
+
+### Gemeinsam 0 – Was matcht was?
+
+**Sag:** *"Tippt nacheinander mit mir:"*
+
+1. `[a-z]` → *"Welche Zeile wird komplett markiert?"*
+2. `[A-Z]` → *"Und jetzt?"*
+3. `[0-9]` → *"Und jetzt?"*
+4. `[^a-zA-Z0-9 ]` → *"Was sind die Treffer in der letzten Zeile?"*
+
+| Regex | Treffer |
+|---|---|
+| `[a-z]` | Zeile 1 komplett |
+| `[A-Z]` | Zeile 2 komplett |
+| `[0-9]` | Zeile 3 komplett |
+| `[^a-zA-Z0-9 ]` | Nur Sonderzeichen in Zeile 4 (Leerzeichen ausgenommen) |
+
+**Erkläre:** `[a-z]` = jeder Kleinbuchstabe. `[0-9]` = jede Ziffer. `[^...]` = alles außer dem Aufgelisteten. Das Leerzeichen in `[^a-zA-Z0-9 ]` schließt auch Leerzeichen aus.
+
+---
+
+### Aufgabe 0
+
+**Frage (kopieren & in Teams einfügen):**
+```
+Schreibt einen Regex, der alle Buchstaben und Ziffern matcht — aber keine Sonderzeichen.
+Tipp: Kombiniert [a-z], [A-Z] und [0-9] in einer Klammer.
+```
+
+**Lösung:** `[a-zA-Z0-9]`  
+**Treffer:** Zeilen 1, 2 und 3 komplett — Zeile 4 (Sonderzeichen) nicht.  
+**Erkläre:** In einer Zeichenklasse können mehrere Bereiche kombiniert werden. `\w` würde auch funktionieren, enthält aber zusätzlich den Unterstrich `_`.
+
+---
+
 ## Phase 1: Grundlagen – "Hallo, Welt!"
 
 **Link an Kollegen schicken:** https://regex101.com/r/QEd4Fj/1

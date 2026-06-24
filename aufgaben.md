@@ -4,6 +4,41 @@
 
 ---
 
+## Phase 0: Zeichentypen
+
+**Link:** [TODO] ← alle öffnen diesen Link
+
+**Test-String:**
+```
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+0123456789
+! @ # $ % & * ( ) - + = . , / ?
+```
+
+---
+
+### Gemeinsam 0 – Was matcht was?
+
+Tippt gemeinsam nacheinander:
+
+1. `[a-z]` → Welche Zeile wird komplett markiert?
+2. `[A-Z]` → Und jetzt?
+3. `[0-9]` → Und jetzt?
+4. `[^a-zA-Z0-9 ]` → Was sind die Treffer in der letzten Zeile?
+
+**Erkenntnis:** Zeichenklassen `[ ]` definieren erlaubte Zeichen. `^` inside `[ ]` bedeutet "alles außer".
+
+---
+
+### Aufgabe 0
+
+> Schreibe einen Regex, der alle Buchstaben **und** Ziffern matcht — aber keine Sonderzeichen.
+
+*Tipp: Kombiniert `[a-z]`, `[A-Z]` und `[0-9]` in einer Klammer*
+
+---
+
 ## Phase 1: Grundlagen – "Hallo, Welt!"
 
 **Link:** https://regex101.com/r/QEd4Fj/1 ← alle öffnen diesen Link
