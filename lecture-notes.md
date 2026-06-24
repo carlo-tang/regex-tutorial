@@ -85,12 +85,13 @@ Tipp: Nutzt \
 
 ## Phase 1: Grundlagen – "Hallo, Welt!"
 
-**Link an Kollegen schicken:** https://regex101.com/r/QEd4Fj/1
+**Link an Kollegen schicken:** https://regex101.com/r/QEd4Fj/2
 
 **Test-String:**
 ```
 Hallo, Welt!
 Hallo Welt
+Welt Hallo
 hallo, Welt!
 HALLO, WELT!
 Hallo, Welt
@@ -109,9 +110,9 @@ Hallo, welt!
 
 | Regex | Treffer | Hinweis |
 |---|---|---|
-| `Hallo` | 4 Zeilen | "hallo" und "HALLO" fehlen |
-| `hallo` | 1 Zeile | nur Zeile 3 |
-| `HALLO` | 1 Zeile | nur Zeile 4 |
+| `Hallo` | 5 Zeilen | "hallo", "HALLO" fehlen — auch "Welt Hallo" matcht! |
+| `hallo` | 1 Zeile | nur "hallo, Welt!" |
+| `HALLO` | 1 Zeile | nur "HALLO, WELT!" |
 
 **Erkläre:** Regex hat keine Sprachkenntnis — es vergleicht Zeichen für Zeichen, exakt wie geschrieben.
 
@@ -129,7 +130,7 @@ Tipp: Nutzt [ ]
 ```
 [Hh]allo
 ```
-**Treffer:** 5 Zeilen (alle außer "HALLO, WELT!")  
+**Treffer:** 6 Zeilen (alle außer "HALLO, WELT!")  
 **Erkläre:** `[Hh]` = Zeichenklasse — matcht genau ein Zeichen, entweder "H" oder "h". Alles in eckigen Klammern ist eine Auswahl von einem Zeichen.
 
 ---
