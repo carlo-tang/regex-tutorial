@@ -87,6 +87,16 @@ Tipp: Nutzt \
 
 **Link an Kollegen schicken:** https://regex101.com/r/QEd4Fj/1
 
+**Test-String:**
+```
+Hallo, Welt!
+Hallo Welt
+hallo, Welt!
+HALLO, WELT!
+Hallo, Welt
+Hallo, welt!
+```
+
 ---
 
 ### Gemeinsam 1 – Literal & Groß-/Kleinschreibung
@@ -161,6 +171,20 @@ Tipp: Nutzt $
 ## Phase 2: IP-Adressen
 
 **Link an Kollegen schicken:** https://regex101.com/r/lO9tf0/1
+
+**Test-String:**
+```
+192.168.1.1
+10.0.0.1
+172.16.5.100
+8.8.8.8
+256.1.1.1
+192.168.1.999
+192_168_1_1
+Kein IP: nur Text
+192.168.1.1 ist der Router
+Server: 10.0.0.254
+```
 
 ---
 
