@@ -13,8 +13,11 @@
 abcdefghijklmnopqrstuvwxyz
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 0123456789
-! @ # $ % & * ( ) - + = . , / ?
+! @ # % & - _ = , ; : " ' < > /
+. * + ? ^ $ { } [ ] ( ) | \
 ```
+
+*Zeile 4: Sonderzeichen ohne Escape · Zeile 5: Metazeichen — brauchen immer `\`*
 
 ---
 
@@ -25,16 +28,18 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 1. `[a-z]` → *"Welche Zeile wird komplett markiert?"*
 2. `[A-Z]` → *"Und jetzt?"*
 3. `[0-9]` → *"Und jetzt?"*
-4. `[^a-zA-Z0-9 ]` → *"Was sind die Treffer in der letzten Zeile?"*
+4. `.` → *"Was passiert? Warum matcht der Punkt plötzlich alles?"*
+5. `\.` → *"Was ändert sich jetzt?"*
 
-| Regex | Treffer |
-|---|---|
-| `[a-z]` | Zeile 1 komplett |
-| `[A-Z]` | Zeile 2 komplett |
-| `[0-9]` | Zeile 3 komplett |
-| `[^a-zA-Z0-9 ]` | Nur Sonderzeichen in Zeile 4 (Leerzeichen ausgenommen) |
+| Regex | Treffer | Hinweis |
+|---|---|---|
+| `[a-z]` | Zeile 1 komplett | |
+| `[A-Z]` | Zeile 2 komplett | |
+| `[0-9]` | Zeile 3 komplett | |
+| `.` | Alles — jedes Zeichen auf jeder Zeile | Punkt = Wildcard, Überraschungsmoment! |
+| `\.` | Nur der `.` in Zeile 5 | Backslash macht aus dem Metazeichen ein Literal |
 
-**Erkläre:** `[a-z]` = jeder Kleinbuchstabe. `[0-9]` = jede Ziffer. `[^...]` = alles außer dem Aufgelisteten. Das Leerzeichen in `[^a-zA-Z0-9 ]` schließt auch Leerzeichen aus.
+**Erkläre:** Zeile 4 = Zeichen die direkt getippt werden können. Zeile 5 = Metazeichen — in Regex haben sie eine Sonderbedeutung, deshalb brauchen sie `\` davor wenn man das Zeichen selbst meint.
 
 ---
 
@@ -42,13 +47,13 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 
 **Frage (kopieren & in Teams einfügen):**
 ```
-Schreibt einen Regex, der alle Buchstaben und Ziffern matcht — aber keine Sonderzeichen.
-Tipp: Kombiniert [a-z], [A-Z] und [0-9] in einer Klammer.
+Schreibt einen Regex, der nur das ? in Zeile 5 matcht — nicht alle anderen Zeichen.
+Tipp: Nutzt \
 ```
 
-**Lösung:** `[a-zA-Z0-9]`  
-**Treffer:** Zeilen 1, 2 und 3 komplett — Zeile 4 (Sonderzeichen) nicht.  
-**Erkläre:** In einer Zeichenklasse können mehrere Bereiche kombiniert werden. `\w` würde auch funktionieren, enthält aber zusätzlich den Unterstrich `_`.
+**Lösung:** `\?`  
+**Treffer:** Nur das `?` in Zeile 5.  
+**Erkläre:** `?` ist ein Metazeichen (bedeutet "0 oder 1 mal"). Mit `\?` wird es zum wörtlichen Fragezeichen. Gleiches Prinzip für alle Zeichen aus Zeile 5.
 
 ---
 

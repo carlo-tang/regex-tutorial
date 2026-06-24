@@ -13,8 +13,11 @@
 abcdefghijklmnopqrstuvwxyz
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 0123456789
-! @ # $ % & * ( ) - + = . , / ?
+! @ # % & - _ = , ; : " ' < > /
+. * + ? ^ $ { } [ ] ( ) | \
 ```
+
+*Zeile 4: Sonderzeichen ohne Escape · Zeile 5: Metazeichen — brauchen immer `\`*
 
 ---
 
@@ -25,17 +28,18 @@ Tippt gemeinsam nacheinander:
 1. `[a-z]` → Welche Zeile wird komplett markiert?
 2. `[A-Z]` → Und jetzt?
 3. `[0-9]` → Und jetzt?
-4. `[^a-zA-Z0-9 ]` → Was sind die Treffer in der letzten Zeile?
+4. `.` → Was passiert? Warum matcht der Punkt plötzlich alles?
+5. `\.` → Was ändert sich jetzt?
 
-**Erkenntnis:** Zeichenklassen `[ ]` definieren erlaubte Zeichen. `^` inside `[ ]` bedeutet "alles außer".
+**Erkenntnis:** Zeile 4 = Zeichen die direkt getippt werden können. Zeile 5 = Metazeichen, die in Regex eine Sonderbedeutung haben und mit `\` escaped werden müssen.
 
 ---
 
 ### Aufgabe 0
 
-> Schreibe einen Regex, der alle Buchstaben **und** Ziffern matcht — aber keine Sonderzeichen.
+> Schreibe einen Regex, der nur das `?` in Zeile 5 matcht — nicht alle anderen Zeichen.
 
-*Tipp: Kombiniert `[a-z]`, `[A-Z]` und `[0-9]` in einer Klammer*
+*Tipp: Nutzt `\`*
 
 ---
 
