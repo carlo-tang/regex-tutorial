@@ -333,7 +333,7 @@ https://10.0.0.254
 **Frage (kopieren & in Teams einfügen):**
 ```
 Das Muster \d+\.\d+\.\d+\.\d+ matcht noch 256.1.1.1 und 192.168.1.999.
-Schreibt einen Regex, der pro Oktett maximal 3 Ziffern erlaubt.
+Schreibt einen Regex, der pro Oktett (die Zahlen zwischen den Punkten) maximal 3 Ziffern erlaubt.
 Tipp: Nutzt { }
 ```
 
