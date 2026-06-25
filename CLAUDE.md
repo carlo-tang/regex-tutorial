@@ -46,7 +46,7 @@ Ziel: Praxisnaher Einstieg, schnelle Erfolgserlebnisse, keine Kommandozeilen-Vor
 | Phase | Link | Version |
 |---|---|---|
 | Phase 0 – Zeichentypen | https://regex101.com/r/9jKmsx/1 | v1 |
-| Phase 1 – Hallo Welt | https://regex101.com/r/QEd4Fj/3 | v3 |
+| Phase 1 – Hallo Welt | https://regex101.com/r/QEd4Fj/4 | v4 |
 | Phase 2 – IP-Adressen | https://regex101.com/r/lO9tf0/2 | v2 |
 
 ---

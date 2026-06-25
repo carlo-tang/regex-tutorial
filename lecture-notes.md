@@ -170,7 +170,7 @@ Tipp: Nutzt [A-Z] und { }
 
 ## Phase 1: Grundlagen – "Hallo, Welt!"
 
-**Link an Kollegen schicken:** https://regex101.com/r/QEd4Fj/3
+**Link an Kollegen schicken:** https://regex101.com/r/QEd4Fj/4
 
 **Test-String:**
 ```
