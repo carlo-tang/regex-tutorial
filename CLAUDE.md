@@ -25,7 +25,7 @@ Ziel: Praxisnaher Einstieg, schnelle Erfolgserlebnisse, keine Kommandozeilen-Vor
 ## Workflow
 
 - `lecture-notes.md` ist **Source of Truth** — hier wird gearbeitet
-- `aufgaben.md` leitet sich davon ab — wird am **Session-Ende** synchronisiert
+- `aufgaben-ohne-loesungen.md` leitet sich davon ab — wird am **Session-Ende** synchronisiert
 - `cheatsheet.md` — Referenzkarte zum Mitnehmen (noch nicht aktualisiert)
 
 ---
@@ -77,8 +77,9 @@ Ziel: Praxisnaher Einstieg, schnelle Erfolgserlebnisse, keine Kommandozeilen-Vor
 
 ## Dateien
 
+- `README.md` — Projektübersicht: Ziel, Zielgruppe, Dateibeschreibungen, Kontext-Verzeichnis
 - `lecture-notes.md` — Moderationsvorlage (Source of Truth): Moderationstext, Regexe, Lösungen, Erklärungen
-- `aufgaben.md` — Kollegenversion (ohne Lösungen), synchron mit lecture-notes
+- `aufgaben-ohne-loesungen.md` — Kollegenversion (ohne Lösungen), synchron mit lecture-notes
 - `cheatsheet.md` — Referenzkarte (noch nicht auf aktuellem Stand)
 - `kontext/` — Quellmaterial (Cisco PDF, Kollegen-Input, TLCL)
 
