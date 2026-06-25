@@ -1,6 +1,6 @@
 # Regex Cheatsheet – Netzwerk Edition
 
-**Flavor:** PCRE (regex101.com, Python, grep -P)
+**Flavor:** PCRE2 (PHP) auf regex101.com · Flags: `g` `m`
 
 ---
 
@@ -67,7 +67,7 @@
 
 ### Nur private IP-Adressen (RFC 1918)
 ```
-(10|172\.16|192\.168)\.\d{1,3}\.\d{1,3}\.\d{1,3}
+(10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.16\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3})
 ```
 
 ### Hostname / FQDN
@@ -109,9 +109,13 @@ Auf regex101 wird PCRE verwendet. In der Kommandozeile:
 - `grep -P 'Muster'` → PCRE (wie regex101, `\d` funktioniert)
 
 **Case-Sensitivity**  
-Regex unterscheidet standardmäßig Groß- und Kleinschreibung.  
-`grep -i` oder das Flag `i` in regex101 schaltet das aus.
+Regex unterscheidet standardmäßig Groß- und Kleinschreibung. Drei Wege:
+- Flag `i` im Flags-Feld (global für das gesamte Muster)
+- `(?i)` direkt im Muster (ab dieser Stelle case insensitive)
+- `(?i:...)` nur für einen Teil des Musters (Fortgeschrittene)
 
 **Metazeichen escapen**  
 Diese Zeichen müssen mit `\` escaped werden, wenn sie wörtlich gemeint sind:  
-`. * + ? ^ $ { } [ ] ( ) | \`
+`. * + ? ^ $ { } [ ] ( ) | \ /`
+
+> **Hinweis:** `/` gilt speziell für regex101 mit PCRE2 (PHP), da PHP `/` als Pattern-Delimiter verwendet.
