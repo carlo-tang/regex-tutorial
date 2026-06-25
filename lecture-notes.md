@@ -302,6 +302,8 @@ Hallo$
 Kein IP: nur Text
 192.168.1.1 ist der Router
 Server: 10.0.0.254
+http://192.168.1.1
+https://10.0.0.254
 ```
 
 ---
@@ -313,14 +315,16 @@ Server: 10.0.0.254
 1. `\d+` → *"Was wird markiert? Was bedeutet `\d`, was bedeutet `+`?"*
 2. `\d+.\d+.\d+.\d+` → *"Welcher Eintrag matcht überraschend? Warum?"*
 3. `\d+\.\d+\.\d+\.\d+` → *"Was ändert sich? Was macht der Backslash?"*
+4. `https?` → *"Was matcht hier? Warum matcht `http` obwohl kein `s` da ist?"*
 
 | Regex | Besonderheit |
 |---|---|
 | `\d+` | Alle Ziffernblöcke einzeln markiert |
 | `\d+.\d+.\d+.\d+` | `192_168_1_1` matcht! Punkt = Wildcard |
 | `\d+\.\d+\.\d+\.\d+` | `192_168_1_1` matcht nicht mehr |
+| `https?` | matcht `http` und `https` — `?` macht das `s` optional |
 
-**Erkläre:** `\d` = Ziffer. `+` = ein oder mehr. `\.` = wörtlicher Punkt. Warten bis jemand `192_168_1_1` bemerkt — dann: *"Genau das passiert in der Praxis: man glaubt nach IPs zu suchen, matcht aber auch Nicht-IPs."*
+**Erkläre:** `\d` = Ziffer. `+` = ein oder mehr. `\.` = wörtlicher Punkt. Warten bis jemand `192_168_1_1` bemerkt — dann: *"Genau das passiert in der Praxis: man glaubt nach IPs zu suchen, matcht aber auch Nicht-IPs."* Bei `https?`: `?` = 0 oder 1 mal — das `s` darf fehlen.
 
 ---
 
