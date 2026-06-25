@@ -210,15 +210,15 @@ Tipp: Nutzt [ ]
 
 1. `(?i)hallo` → *"Wie viele Zeilen? Vergleicht mit `hallo` ohne Flag."*
 2. `(?i)hello` → *"Wie viele Treffer? Matcht auch 'HeLlO'?"*
-3. `(?i:he)llo` → *"Was ändert sich gegenüber `(?i)hello`? Matcht 'HeLlO' noch?"*
 
 | Regex | Treffer | Hinweis |
 |---|---|---|
-| `(?i)hallo` | 9 Zeilen | inline `i` — gleicher Effekt wie die Flag, aber im Muster selbst |
-| `(?i)hello` | 3 Zeilen ("Hello Welt", "World hello", "HeLlO wOrLd") | HeLlO matcht weil alles case insensitive |
-| `(?i:he)llo` | 2 Zeilen ("Hello Welt", "World hello") | Scope: nur "he" insensitiv — "LlO" matcht "llo" nicht mehr |
+| `(?i)hallo` | 9 Zeilen | gleicher Effekt wie die i-Flag, aber direkt im Muster |
+| `(?i)hello` | 3 Zeilen | "Hello Welt", "World hello", "HeLlO wOrLd" |
 
-**Erkläre:** `(?i)` = ab hier case insensitive bis Ende. `(?i:...)` = nur der Inhalt der Klammer ist insensitiv, der Rest des Musters bleibt case sensitive. Mit `(?-i)` lässt sich `i` auch wieder abschalten.
+**Erkläre:** `(?i)` = ab dieser Stelle case insensitive bis Ende des Musters — kein Umweg über das Flags-Feld nötig.
+
+*Für Fortgeschrittene: Mit `(?i:...)` lässt sich der Scope auf einen Teil des Musters begrenzen, mit `(?-i)` wieder abschalten — für heute reicht uns `(?i)`.*
 
 ---
 
