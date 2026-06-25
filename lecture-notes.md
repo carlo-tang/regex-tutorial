@@ -218,7 +218,13 @@ Tipp: Nutzt [ ]
 
 **Erkläre:** `(?i)` = ab dieser Stelle case insensitive bis Ende des Musters — kein Umweg über das Flags-Feld nötig.
 
-*Für Fortgeschrittene: Mit `(?i:...)` lässt sich der Scope auf einen Teil des Musters begrenzen, mit `(?-i)` wieder abschalten — für heute reicht uns `(?i)`.*
+**Weitere inline Modifikatoren (zur Info):**
+
+| Syntax | Bedeutung |
+|---|---|
+| `(?i)` | case insensitive ab hier bis Ende |
+| `(?i:...)` | case insensitive nur für den Inhalt der Klammer |
+| `(?-i)` | case insensitive wieder abschalten |
 
 ---
 
