@@ -212,8 +212,8 @@ Tipp: Nutzt [ ]
 |---|---|---|
 | `Hallo.Welt` | 1 Zeile ("Hallo Welt") | Punkt matcht genau 1 Zeichen — ", " sind 2 Zeichen, passt nicht |
 | `^Hallo` | 5 Zeilen | Zeilen, die mit "Hallo" beginnen — auch "HalloWelt" |
-| `(He|Ha)llo` | 7 Zeilen | `|` = ODER — matcht "Hello" und "Hallo", aber nicht "hallo" |
-| `(Hallo|Hello) Welt` | 2 Zeilen ("Hallo Welt", "Hello Welt") | Klammern fassen die Alternativen zusammen |
+| `(He\|Ha)llo` | 7 Zeilen | `\|` = ODER — matcht "Hello" und "Hallo", aber nicht "hallo" |
+| `(Hallo\|Hello) Welt` | 2 Zeilen ("Hallo Welt", "Hello Welt") | Klammern fassen die Alternativen zusammen |
 
 **Erkläre:** `.` = beliebiges Zeichen — auch Leerzeichen und Kommas. Das ist der häufigste Anfängerfehler in der Praxis. `^` = Zeilenanfang. `|` = ODER, die Klammern `( )` begrenzen was zum ODER gehört — ohne Klammern würde `He|Ha` den ganzen Ausdruck trennen.
 
