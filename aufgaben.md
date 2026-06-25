@@ -1,6 +1,8 @@
 # Regex Tutorial – Ablauf
 
-**Plattform:** regex101.com · Flavor: PCRE · Flags: `g` `m`
+**Plattform:** regex101.com · Flavor: PCRE2 (PHP) · Flags: `g` `m`
+
+**Hinweis:** Wir nutzen den **Global-Modus** (`g`) — der Regex markiert *alle* Treffer im Text, nicht nur den ersten.
 
 ---
 
@@ -15,9 +17,11 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 0123456789
 ! @ # % & - _ = , ; : " ' < >
 . * + ? ^ $ { } [ ] ( ) | \ /
+122333444455555
+aBBcccDDDDeeeee
 ```
 
-*Zeile 4: Sonderzeichen ohne Escape · Zeile 5: Metazeichen — brauchen immer `\`*
+*Zeile 4: Sonderzeichen ohne Escape · Zeile 5: Metazeichen — brauchen immer `\` · Zeilen 6+7: für Quantifizierer*
 
 ---
 
@@ -28,29 +32,67 @@ Tippt gemeinsam nacheinander:
 1. `[a-z]` → Welche Zeile wird komplett markiert?
 2. `[A-Z]` → Und jetzt?
 3. `[0-9]` → Und jetzt?
-4. `.` → Was passiert? Warum matcht der Punkt plötzlich alles?
-5. `\.` → Was ändert sich jetzt?
+4. `[a-Z]` → Was passiert jetzt?
+5. `[A-z]` → Was matcht hier unerwartet?
+6. `[0-z]` → Was matcht jetzt alles?
+7. `[0-9A-Za-z]` → Wie schreibt man es richtig?
+8. *(live)* — gemischte Zeichenklasse mit Buchstaben, Ziffern und Sonderzeichen
+9. `.` → Was passiert? Warum matcht der Punkt plötzlich alles?
+10. `\.` → Was ändert sich jetzt?
 
-**Erkenntnis:** Zeile 4 = Zeichen die direkt getippt werden können. Zeile 5 = Metazeichen, die in Regex eine Sonderbedeutung haben und mit `\` escaped werden müssen.
+**Erkenntnis:** Zeichen-Bereiche folgen der ASCII-Tabelle, nicht dem Alphabet. Zeile 4 = Zeichen ohne Escape. Zeile 5 = Metazeichen, die `\` brauchen.
 
 ---
 
 ### Aufgabe 0
 
-> Schreibe einen Regex, der nur das `?` in Zeile 5 matcht — nicht alle anderen Zeichen.
+> Schreibt einen Regex, der nur das `?` in Zeile 5 matcht — nicht alle anderen Zeichen.
 
 *Tipp: Nutzt `\`*
 
 ---
 
+### Gemeinsam 0b – Quantifizierer
+
+Tippt gemeinsam nacheinander — Fokus auf Zeilen 6 und 7:
+
+1. `\d` → Wie viele Treffer? Jede Ziffer einzeln.
+2. `\d+` → Was ändert sich? Warum ein Treffer statt vielen?
+3. `\d{3}` → Was matcht jetzt genau? Zählt die Gruppen.
+4. `\d{2,4}` → Was passiert bei 2 bis 4 Ziffern?
+5. `[A-Z]+` → Was matcht in Zeile 7? Warum nicht das `a` am Anfang?
+6. `[a-z]+` → Und jetzt? Wie viele Treffer, welche?
+
+**Übersicht Quantifizierer:**
+
+| Symbol | Bedeutung |
+|---|---|
+| `+` | 1 oder mehr |
+| `*` | 0 oder mehr |
+| `?` | 0 oder 1 (optional) |
+| `{n}` | genau n mal |
+| `{n,}` | mindestens n mal |
+| `{n,m}` | zwischen n und m mal |
+
+---
+
+### Aufgabe 0b
+
+> Schreibt einen Regex, der auf Zeile 7 (`aBBcccDDDDeeeee`) nur die Großbuchstaben-Blöcke matcht — aber mindestens 2 Großbuchstaben am Stück.
+
+*Tipp: Nutzt `[A-Z]` und `{ }`*
+
+---
+
 ## Phase 1: Grundlagen – "Hallo, Welt!"
 
-**Link:** https://regex101.com/r/QEd4Fj/1 ← alle öffnen diesen Link
+**Link:** https://regex101.com/r/QEd4Fj/2 ← alle öffnen diesen Link
 
 **Test-String:**
 ```
 Hallo, Welt!
 Hallo Welt
+Welt Hallo
 hallo, Welt!
 HALLO, WELT!
 Hallo, Welt
@@ -63,7 +105,7 @@ Hallo, welt!
 
 Tippt gemeinsam nacheinander:
 
-1. `Hallo` → Wie viele Treffer? Welche Zeilen fehlen?
+1. `Hallo` → Wie viele Zeilen werden markiert? Welche fehlen?
 2. `hallo` → Was ändert sich?
 3. `HALLO` → Was passiert?
 
@@ -73,7 +115,7 @@ Tippt gemeinsam nacheinander:
 
 ### Aufgabe 1
 
-> Schreibe einen Regex, der sowohl `Hallo` als auch `hallo` findet — aber nicht `HALLO`.
+> Schreibt einen Regex, der sowohl `Hallo` als auch `hallo` findet — aber nicht `HALLO`.
 
 *Tipp: Nutzt `[ ]`*
 
@@ -83,16 +125,16 @@ Tippt gemeinsam nacheinander:
 
 Tippt gemeinsam nacheinander:
 
-1. `Hallo.Welt` → Warum matcht auch "Hallo Welt" (mit Leerzeichen)?
+1. `Hallo.Welt` → Wie viele Zeilen matchen? Warum nicht mehr?
 2. `^Hallo` → Was bewirkt das `^`?
 
-**Erkenntnis:** `.` = beliebiges Zeichen. `^` = Zeilenanfang.
+**Erkenntnis:** `.` = genau 1 beliebiges Zeichen. `^` = Zeilenanfang.
 
 ---
 
 ### Aufgabe 2
 
-> Schreibe einen Regex, der nur Zeilen findet, die mit `!` **enden**.
+> Schreibt einen Regex, der nur Zeilen findet, die mit `Hallo` **enden**.
 
 *Tipp: Nutzt `$`*
 
@@ -132,10 +174,8 @@ Tippt gemeinsam nacheinander:
 
 ### Aufgabe 3
 
-*Test-String: gleicher wie oben (Phase 2)*
-
 > Das Muster `\d+\.\d+\.\d+\.\d+` matcht noch `256.1.1.1` und `192.168.1.999`.  
-> Schreibe einen Regex, der pro Oktett **maximal 3 Ziffern** erlaubt.
+> Schreibt einen Regex, der pro Oktett **maximal 3 Ziffern** erlaubt.
 
 *Tipp: Nutzt `{ }`*
 
@@ -147,5 +187,7 @@ Tippt gemeinsam nacheinander:
 
 ### Bonus – Private IP-Bereiche
 
-> Schreibe einen Regex, der **nur** IPs aus privaten Netzen findet:  
+> Schreibt einen Regex, der **nur** IPs aus privaten Netzen findet:  
 > 10.x.x.x · 172.16.x.x · 192.168.x.x
+
+*Tipp: Nutzt `( )` und `|`*
