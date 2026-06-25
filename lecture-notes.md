@@ -298,7 +298,7 @@ Tipp: Nutzt ( ) und |
 ```
 (10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.16\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3})
 ```
-**Treffer:** `10.0.0.1`, `172.16.5.100`, `192.168.1.1`, `192.168.1.999`, `192.168.1.1 ist der Router`, `10.0.0.254`  
+**Treffer:** `10.0.0.1`, `172.16.5.100`, `192.168.1.1` (2×, auch in "192.168.1.1 ist der Router"), `192.168.1.999`, `10.0.0.254`  
 **Erkläre:** `|` = ODER. Jede Alternative ist ein vollständiges Muster — `10` braucht noch 3 Oktette, `172.16` und `192.168` nur noch 2. Deshalb muss jede Alternative für sich ausgeschrieben werden.  
 **Wichtig — auf `192.168.1.999` hinweisen:** *"Diese IP matcht — obwohl 999 kein gültiges Oktett ist. Warum?"* → `\d{1,3}` prüft nur: 1 bis 3 Ziffern. Ob der Wert zwischen 0 und 255 liegt, kann Regex grundsätzlich nicht prüfen. Regex erkennt **Format**, nicht **Bedeutung**.
 
