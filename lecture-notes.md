@@ -218,13 +218,13 @@ Tipp: Nutzt [ ]
 
 **Erkläre:** `(?i)` = ab dieser Stelle case insensitive bis Ende des Musters — kein Umweg über das Flags-Feld nötig.
 
-**Weitere inline Modifikatoren (zur Info):**
+**Weitere inline Modifikatoren (Fortgeschrittene):**
 
-| Syntax | Bedeutung |
-|---|---|
-| `(?i)` | case insensitive ab hier bis Ende |
-| `(?i:...)` | case insensitive nur für den Inhalt der Klammer |
-| `(?-i)` | case insensitive wieder abschalten |
+| Syntax | Beispiel | Bedeutung |
+|---|---|---|
+| `(?i)` | `(?i)hallo welt` | ab hier alles insensitiv → matcht "Hallo Welt", "HALLO WELT", "hAlLo WeLt" |
+| `(?i:...)` | `(?i:hallo) Welt` | nur "hallo" insensitiv, " Welt" muss exakt so stehen |
+| `(?-i)` | `(?i)hallo(?-i) Welt` | "hallo" insensitiv, danach wieder sensitiv → " Welt" muss exakt " Welt" sein |
 
 ---
 
