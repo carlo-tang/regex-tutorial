@@ -144,7 +144,7 @@ Tipp: Nutzt [A-Z] und { }
 
 ## Phase 1: Grundlagen – "Hallo, Welt!"
 
-**Link an Kollegen schicken:** https://regex101.com/r/QEd4Fj/2
+**Link an Kollegen schicken:** https://regex101.com/r/QEd4Fj/3
 
 **Test-String:**
 ```
@@ -155,6 +155,11 @@ hallo, Welt!
 HALLO, WELT!
 Hallo, Welt
 Hallo, welt!
+Hello Welt
+HalloWelt
+hallowelt
+World hello
+HeLlO wOrLd
 ```
 
 ---
@@ -169,8 +174,8 @@ Hallo, welt!
 
 | Regex | Treffer | Hinweis |
 |---|---|---|
-| `Hallo` | 5 Zeilen | "hallo", "HALLO" fehlen — auch "Welt Hallo" matcht! |
-| `hallo` | 1 Zeile | nur "hallo, Welt!" |
+| `Hallo` | 6 Zeilen | "hallo", "HALLO", "Hello" fehlen — auch "Welt Hallo" und "HalloWelt" matchen! |
+| `hallo` | 2 Zeilen | "hallo, Welt!" und "hallowelt" |
 | `HALLO` | 1 Zeile | nur "HALLO, WELT!" |
 
 **Erkläre:** Regex hat keine Sprachkenntnis — es vergleicht Zeichen für Zeichen, exakt wie geschrieben.
@@ -189,7 +194,7 @@ Tipp: Nutzt [ ]
 ```
 [Hh]allo
 ```
-**Treffer:** 6 Zeilen (alle außer "HALLO, WELT!")  
+**Treffer:** 8 Zeilen (alle außer "HALLO, WELT!", "Hello Welt", "World hello", "HeLlO wOrLd")  
 **Erkläre:** `[Hh]` = Zeichenklasse — matcht genau ein Zeichen, entweder "H" oder "h". Alles in eckigen Klammern ist eine Auswahl von einem Zeichen.
 
 ---
@@ -204,7 +209,7 @@ Tipp: Nutzt [ ]
 | Regex | Treffer | Hinweis |
 |---|---|---|
 | `Hallo.Welt` | 1 Zeile ("Hallo Welt") | Punkt matcht genau 1 Zeichen — ", " sind 2 Zeichen, passt nicht |
-| `^Hallo` | 4 Zeilen | Zeilen, die mit "Hallo" beginnen |
+| `^Hallo` | 5 Zeilen | Zeilen, die mit "Hallo" beginnen — auch "HalloWelt" |
 
 **Erkläre:** `.` = beliebiges Zeichen — auch Leerzeichen und Kommas. Das ist der häufigste Anfängerfehler in der Praxis. `^` = Zeilenanfang.
 
