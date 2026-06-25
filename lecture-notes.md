@@ -116,31 +116,37 @@ Tipp: Nutzt \
 1. `\d` → *"Wie viele Treffer? Jede Ziffer einzeln."*
 2. `\d+` → *"Was ändert sich? Warum ein Treffer statt vielen?"*
 3. `\d{3}` → *"Was matcht jetzt genau? Zählt die Gruppen."*
-4. `\d{2,4}` → *"Was passiert bei 2 bis 4 Ziffern?"*
-5. `[A-Z]+` → *"Was matcht in Zeile 7? Warum nicht das 'a' am Anfang?"*
-6. `[a-z]+` → *"Und jetzt? Wie viele Treffer, welche?"*
+4. `\d{3,}` → *"Vergleicht mit `\d{3}` — was ist der Unterschied?"*
+5. `\d{2,4}` → *"Was passiert bei 2 bis 4 Ziffern?"*
+6. `[A-Z]+` → *"Was matcht in Zeile 7? Warum nicht das 'a' am Anfang?"*
+7. `[A-Z]*` → *"Was ändert sich gegenüber `[A-Z]+`? Werden jetzt mehr oder weniger Stellen markiert?"*
+8. `[a-z]+` → *"Wie viele Treffer, welche?"*
+9. *(kein eigener Test-String nötig)* `https?` → *"Was würde das matchen? Tippt es ein — was matcht `http`, was `https`?"*
 
 | Regex | Treffer auf Zeile 6+7 | Hinweis |
 |---|---|---|
 | `\d` | 15 Einzelziffern | ein Match pro Zeichen |
 | `\d+` | `122333444455555` (1 Treffer) | gierig — nimmt so viele wie möglich |
 | `\d{3}` | `122` `333` `444` `455` `555` | genau 3, Rest wird neu angefangen |
+| `\d{3,}` | `122333444455555` (1 Treffer) | mindestens 3 — gierig nimmt alles |
 | `\d{2,4}` | `1223` `3344` `4455` `555` | gierig: nimmt 4 wenn möglich, sonst weniger |
 | `[A-Z]+` | `BB` `DDDD` | nur Großbuchstaben-Blöcke |
+| `[A-Z]*` | `BB` `DDDD` + leere Matches | `*` = 0 oder mehr — matcht auch "nichts" zwischen Kleinbuchstaben |
 | `[a-z]+` | `a` `ccc` `eeeee` | nur Kleinbuchstaben-Blöcke |
+| `https?` | `http` und `https` | `?` = 0 oder 1 — das `s` ist optional |
+
+**Erkläre:** Quantifizierer sind immer **gierig** — sie nehmen so viele Zeichen wie möglich. `\d+` auf `122333` gibt einen einzigen Treffer, nicht sechs. Der Unterschied zwischen `+` und `*`: `+` verlangt mindestens ein Zeichen, `*` ist auch mit null zufrieden — deshalb entstehen bei `*` leere Matches zwischen Zeichen.
 
 **Übersicht Quantifizierer:**
 
-| Symbol | Bedeutung |
-|---|---|
-| `+` | 1 oder mehr |
-| `*` | 0 oder mehr |
-| `?` | 0 oder 1 (optional) |
-| `{n}` | genau n mal |
-| `{n,}` | mindestens n mal |
-| `{n,m}` | zwischen n und m mal |
-
-**Erkläre:** Quantifizierer sind immer **gierig** — sie nehmen so viele Zeichen wie möglich. `\d+` auf `122333` gibt einen einzigen Treffer, nicht sechs.
+| Symbol | Bedeutung | Beispiel |
+|---|---|---|
+| `+` | 1 oder mehr | `\d+` → mindestens eine Ziffer |
+| `*` | 0 oder mehr | `[A-Z]*` → auch leere Matches möglich |
+| `?` | 0 oder 1 (optional) | `https?` → `http` oder `https` |
+| `{n}` | genau n mal | `\d{3}` → genau 3 Ziffern |
+| `{n,}` | mindestens n mal | `\d{3,}` → 3 oder mehr Ziffern |
+| `{n,m}` | zwischen n und m mal | `\d{2,4}` → 2 bis 4 Ziffern |
 
 ---
 
