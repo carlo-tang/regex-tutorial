@@ -10,6 +10,11 @@
 
 **Link an Kollegen schicken:** https://regex101.com/r/9jKmsx/1
 
+**Flags kurz erklären:** Wir nutzen `g` (global) und `m` (multiline). Es gibt noch eine dritte nützliche Flag:
+- `i` — **case insensitive**: `hallo` matcht dann auch `Hallo`, `HALLO`, `HaLlO`. Einfach `i` ins Flags-Feld eintragen. Wir kommen in Phase 1 nochmal dazu mit inline-Varianten.
+
+---
+
 **Erkläre zuerst die regex101-Oberfläche:**  
 Mitte: "Regular Expression" (oben) und "Test String" (unten) — ergibt sich von selbst.  
 Rechte Spalte zeigen und erklären:
@@ -196,6 +201,24 @@ Tipp: Nutzt [ ]
 ```
 **Treffer:** 8 Zeilen (alle außer "HALLO, WELT!", "Hello Welt", "World hello", "HeLlO wOrLd")  
 **Erkläre:** `[Hh]` = Zeichenklasse — matcht genau ein Zeichen, entweder "H" oder "h". Alles in eckigen Klammern ist eine Auswahl von einem Zeichen.
+
+---
+
+### Gemeinsam 1b – Case Insensitive (inline)
+
+**Sag:** *"Die `i`-Flag schaltet das global um — aber man kann es auch gezielt im Muster steuern:"*
+
+1. `(?i)hallo` → *"Wie viele Zeilen? Vergleicht mit `hallo` ohne Flag."*
+2. `(?i)hello` → *"Wie viele Treffer? Matcht auch 'HeLlO'?"*
+3. `(?i:he)llo` → *"Was ändert sich gegenüber `(?i)hello`? Matcht 'HeLlO' noch?"*
+
+| Regex | Treffer | Hinweis |
+|---|---|---|
+| `(?i)hallo` | 9 Zeilen | inline `i` — gleicher Effekt wie die Flag, aber im Muster selbst |
+| `(?i)hello` | 3 Zeilen ("Hello Welt", "World hello", "HeLlO wOrLd") | HeLlO matcht weil alles case insensitive |
+| `(?i:he)llo` | 2 Zeilen ("Hello Welt", "World hello") | Scope: nur "he" insensitiv — "LlO" matcht "llo" nicht mehr |
+
+**Erkläre:** `(?i)` = ab hier case insensitive bis Ende. `(?i:...)` = nur der Inhalt der Klammer ist insensitiv, der Rest des Musters bleibt case sensitive. Mit `(?-i)` lässt sich `i` auch wieder abschalten.
 
 ---
 
