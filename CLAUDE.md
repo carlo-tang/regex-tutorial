@@ -1,6 +1,6 @@
 # Regex Tutorial – Projektnotizen
 
-**Datum:** 2026-06-24
+**Datum:** 2026-06-25
 **Verzeichnis:** /home/carlo/regex-tutorial
 
 ---
@@ -16,73 +16,76 @@ Ziel: Praxisnaher Einstieg, schnelle Erfolgserlebnisse, keine Kommandozeilen-Vor
 
 - **Publikum:** Netzwerkkollegen (GUI-affin, nicht CLI-erfahren) + Carlo (Linux-Admin)
 - **Format:** Teams-Präsentation, Präsentator teilt Bildschirm
-- **Platform:** regex101.com (PCRE voreingestellt, GUI-freundlich, Echtzeit-Highlighting)
-- **Flavor:** PCRE (auf regex101 vorgewählt, Kollegen sehen das nicht)
+- **Platform:** regex101.com · Flavor: **PCRE2 (PHP)** · Flags: `g` `m`
+- **Warum PCRE2 (PHP):** Voreinstellung auf regex101. PHP verwendet `/` als Pattern-Delimiter → `/` muss escaped werden (`\/`), gehört daher zu den Metazeichen
 - **Umfang:** Leichter Einstieg, kein Tiefgang in Backreferences/Capture Groups
+
+---
+
+## Workflow
+
+- `lecture-notes.md` ist **Source of Truth** — hier wird gearbeitet
+- `aufgaben.md` leitet sich davon ab — wird am **Session-Ende** synchronisiert
+- `cheatsheet.md` — Referenzkarte zum Mitnehmen (noch nicht aktualisiert)
 
 ---
 
 ## Entscheidungen
 
-- regex101.com + vorbereitete Links (Test-Strings bereits befüllt) statt eigener Webseite
-- Cisco-Seite (appreexp.html) war nicht abrufbar (403) — Cisco-Syntax wird ausgeklammert
-- POSIX/grep-Unterschiede (z.B. \d vs [0-9]) werden nur kurz erwähnt, nicht vertieft
-- Backreferences und Suchen/Ersetzen: zu fortgeschritten, rauslassen
+- regex101.com + vorbereitete Links statt eigener Webseite
+- `/` gehört zu den Metazeichen (Zeile 5) wegen PHP-Delimiter
+- Cisco-Seite (403) → PDF vorhanden in kontext/. Inhalt (PCRE Cambridge Doku) zu fortgeschritten — ausgeklammert
+- POSIX/grep-Unterschiede: nur kurz erwähnen, nicht vertiefen
+- Backreferences, Suchen/Ersetzen: zu fortgeschritten, rauslassen
+- `(?i:...)` und `(?-i)`: nur als Fortgeschrittenen-Tabelle, keine Live-Demo
 
 ---
 
-## Lehrpfad (geplant)
+## Aktuelle Links (regex101)
 
-### Einstieg — Erfolgserlebnis zuerst
-1. Literal: `192` eintippen → sofort Treffer sehen
-2. Punkt als Wildcard: `192.168` matcht auch `192X168` → Aha-Moment
-3. Punkt escapen: `192\.168` → nur echte IPs
-
-### Grundbausteine
-- `.` — beliebiges Zeichen
-- `^` und `$` — Anfang/Ende der Zeile
-- `[0-9]` und `\d` — Zeichenklassen
-- `+`, `*`, `?`, `{n,m}` — Quantifizierer
-- `[abc]`, `[^abc]` — Mengen und Negation
-- `|` — Alternation (oder)
-- `\` — Escaping
-
-### Themenblöcke (Netzwerk-Kontext)
-- **IP-Adressen:** einfach → präzise (nur gültige Oktette)
-- **Hostnamen/FQDNs:** Buchstaben, Ziffern, Bindestriche, Domains
-
-### Bewusst ausgeklammert (für diesen Einstieg)
-- Capture Groups / Backreferences
-- MAC-Adressen (zu spezifisch für Einstieg)
-- Cisco IOS Regex-Syntax
-- grep -P / POSIX ERE Unterschiede (nur kurz erwähnen)
+| Phase | Link | Version |
+|---|---|---|
+| Phase 0 – Zeichentypen | https://regex101.com/r/9jKmsx/1 | v1 |
+| Phase 1 – Hallo Welt | https://regex101.com/r/QEd4Fj/3 | v3 |
+| Phase 2 – IP-Adressen | https://regex101.com/r/lO9tf0/2 | v2 |
 
 ---
 
-## Materialien (kontext/)
+## Struktur (50 Minuten)
 
-- `input-kollege.md` — Kollegeninput: gut strukturiert, aber zu umfangreich für Einstieg
-- `cisco-regex-link.md` + `Regular Expression Reference - Cisco.pdf` — Seite ist erreichbar (PDF vorhanden). Inhalt: PCRE-Referenzdokumentation der University of Cambridge, von Cisco für ihr Sicherheitstool MARS gehostet. Bestätigt: Cisco verwendet PCRE → unsere Wahl von PCRE auf regex101 ist korrekt. Inhalt selbst (Lookahead, Atomic Grouping, Recursive Patterns) ist viel zu fortgeschritten für den Einstieg — ausgeklammert.
-- `TLCL-25.12.pdf` S. 267–288 — "The Linux Command Line" Kap. 19 (grep/POSIX BRE/ERE)
+- **Intro:** MIT Cheatsheet zeigen + deutsche Fachbegriffe + regex101-Oberfläche erklären (Explanation, Match information, Quick reference)
+- **Phase 0** – Zeichentypen, ASCII-Fallstricke, Quantifizierer (~15 min)
+- **Phase 1** – Hallo Welt: Literale, Case Sensitivity, `(?i)`, Punkt, Anker, Alternation (~15 min)
+- **Phase 2** – IP-Adressen: `\d`, Escaping, Quantifizierer, `https?` (~15 min)
+- **Puffer / Fragen:** 5 min
+- **Bonus + Exkurs:** wenn Zeit bleibt
 
 ---
 
-## Zeitplan (50 Minuten)
+## Wichtige inhaltliche Entscheidungen
 
-- Intro + regex101 erklären: 5 min
-- Phase 1 (Aufgaben 1–3, Hallo Welt): ~15 min
-- Phase 2 (Aufgaben 4–6, IP-Adressen): ~20 min
-- Puffer / Fragen: 10 min
-- Bonus A+B (Hostnamen, private IPs): wenn Zeit bleibt
+- ASCII-Fallstricke in Phase 0: `[a-Z]` Fehler, `[A-z]` unerwartete Sonderzeichen, `[0-z]` noch mehr
+- `[A-Za-z]` explizit kombinieren statt Ranges über Grenzen
+- Quantifizierer-Demo auf Zeilen 6+7 (`122333444455555`, `aBBcccDDDDeeeee`)
+- `https?` als `?`-Beispiel — Phase 0b erwähnt, Phase 2 live mit http/https im Test-String
+- `Hallo.Welt` matcht nur 1 Zeile — Punkt = genau 1 Zeichen, nicht "irgendwas dazwischen"
+- Bonus-Regex private IPs: jede Alternative vollständig ausschreiben (172.16 und 192.168 verbrauchen bereits 2 Oktette)
+- Exkurs: Regex = Format-Prüfung, nicht Wertebereich. Vollständiger IP-Regex gezeigt, nicht getippt.
+- Matching vs. Validierung: `^` und `$` als Anker für Validierung
+
+---
 
 ## Dateien
 
 - `lecture-notes.md` — Moderationsvorlage (Source of Truth): Moderationstext, Regexe, Lösungen, Erklärungen
-- `aufgaben.md` — Kollegenversion: leitet sich aus lecture-notes.md ab (erst lecture-notes fertig, dann sync)
-- `cheatsheet.md` — Referenzkarte: alle Konzepte + Netzwerk-Beispiele zum Mitnehmen
+- `aufgaben.md` — Kollegenversion (ohne Lösungen), synchron mit lecture-notes
+- `cheatsheet.md` — Referenzkarte (noch nicht auf aktuellem Stand)
+- `kontext/` — Quellmaterial (Cisco PDF, Kollegen-Input, TLCL)
+
+---
 
 ## Nächste Schritte
 
-- [ ] Links in regex101.com erstellen (Save & Share, Flags: gm, PCRE)
-- [ ] Links in aufgaben.md und loesungen.md eintragen
-- [ ] Links testen
+- [ ] Tutorial durchführen
+- [ ] cheatsheet.md auf aktuellen Stand bringen
+- [ ] Feedback nach Tutorial einholen
