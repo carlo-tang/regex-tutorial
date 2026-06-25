@@ -8,7 +8,7 @@
 
 ## Phase 0: Zeichentypen
 
-**Link an Kollegen schicken:** [TODO]
+**Link an Kollegen schicken:** https://regex101.com/r/9jKmsx/1
 
 **Erkläre zuerst die regex101-Oberfläche:**  
 Mitte: "Regular Expression" (oben) und "Test String" (unten) — ergibt sich von selbst.  
