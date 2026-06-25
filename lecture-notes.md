@@ -288,7 +288,7 @@ Hallo$
 
 ## Phase 2: IP-Adressen
 
-**Link an Kollegen schicken:** https://regex101.com/r/lO9tf0/1
+**Link an Kollegen schicken:** https://regex101.com/r/lO9tf0/2
 
 **Test-String:**
 ```
@@ -348,7 +348,7 @@ Tipp: Nutzt { }
 
 ## Bonus (wenn Zeit bleibt)
 
-**Link:** https://regex101.com/r/lO9tf0/1 (gleicher wie Phase 2)
+**Link:** https://regex101.com/r/lO9tf0/2 (gleicher wie Phase 2)
 
 **Frage (kopieren & in Teams einfügen):**
 ```
