@@ -1,5 +1,8 @@
 # Regex Tutorial – Moderationsvorlage
 
+<!-- TODO: Einleitung ergänzen — was ist Regex und wozu wird es gebraucht? (z.B. Log-Analyse, Filterregeln, Validierung von IPs/MACs) -->
+<!-- TODO: \s erklären — matcht Whitespace-Zeichen (Leerzeichen, Tab, Zeilenumbruch u.a.) -->
+
 **Einstieg — Cheatsheet zeigen:** [MIT Regex Cheatsheet (PDF)](https://web.mit.edu/hackl/www/lab/turkshop/slides/regex-cheatsheet.pdf)
 
 Folgende Abschnitte kurz vorstellen (deutsche Bezeichnungen):
