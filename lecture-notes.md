@@ -1,5 +1,20 @@
 # Regex Tutorial – Moderationsvorlage
 
+**Einstieg — Cheatsheet zeigen:** [MIT Regex Cheatsheet (PDF)](https://web.mit.edu/hackl/www/lab/turkshop/slides/regex-cheatsheet.pdf)
+
+Folgende Abschnitte kurz vorstellen (deutsche Bezeichnungen):
+
+| Englisch | Deutsch | Bedeutung |
+|---|---|---|
+| Basic Matching | **Literale** | Zeichen werden direkt und exakt verglichen |
+| Boundaries | **Anker** | Positionen im Text: Zeilenanfang `^`, Zeilenende `$` |
+| Disjunction | **Alternation** | ODER-Verknüpfung: `(Hallo\|Hello)` |
+| Quantifiers | **Quantifizierer** | Wiederholungen: `+`, `*`, `?`, `{n,m}` |
+
+*Ziel: Kollegen bekommen einen Überblick bevor wir eintippen — kein tiefes Lesen, nur Orientierung.*
+
+---
+
 **Plattform:** regex101.com · Flavor: PCRE2 (PHP) · Flags: `g` `m`
 
 **Hinweis zu den Flags:** Wir nutzen den **Global-Modus** (`g`). Das bedeutet: der Regex sucht nicht nur den ersten Treffer und hört auf, sondern läuft den gesamten Text durch und markiert *alle* Treffer. Ohne `g` würde z.B. `[a-z]` nur den ersten Buchstaben `a` markieren. Wenn die Kollegen fragen warum alles auf einmal markiert wird — das ist der Grund.
